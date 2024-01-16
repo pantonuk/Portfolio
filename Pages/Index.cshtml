@@ -1,0 +1,117 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="figure">
+  <img src="~/Images/PeterA.jpg" alt="">
+</div>
+
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: rgb(250, 248, 248);
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<h2>Background</h2>
+
+<button class="accordion">About Me</button>
+<div class="panel">
+  <p>Driven Computer Science graduate adept at problem-solving, with a knack for flexible conceptual thinking. Proficient in application development best practices, specializing in viewing and manipulating geo-spatial data to identify and label assets.</p>
+</div>
+<h2>Work Experience</h2>
+<button class="accordion">Software Development Intern at Mandli Communications, Fitchburg, WI</button>
+<div class="panel">
+  <p> May 2021- Sep 2021 and May 2022 - May 2023</p>
+  <p>Enhanced internal facing Java desktop app, Road-View Explorer, by integrating modal windows to display detailed asset data, optimizing user experience.
+Investigated and resolved floating point precision issues affecting geospatial asset locations, employing Intellij debugging to rectify rounding errors during data processing.
+Developed Python ETL jobs to generate model training datasets from SQL databases and image repositories, ensuring compatibility with training tools.
+Lead automation POC project to construct custom computer vision models using TensorFlow, Pytorch and YOLOV5 with extracted datasets to reduce post processing of collected data.</p>
+</div>
+
+<button class="accordion">Txm Technician Team Leader at Smart Motors Toyota, Madison, WI</button>
+<div class="panel">
+  <p>2019 - 2021</p>
+  <p>Led team of technicians, organized work, mentored and evaluated staff. Pioneered more efficient and reproducible approaches to common diagnostics and repairs. Exceeded all previous benchmarks for throughput, quality, and profitability.
+</p>
+</div>
+
+<button class="accordion">Shop Manager at Manhattan Alignment and Diagnostic Center, Manhattan, NY</button>
+<div class="panel">
+  <p>2017 - 2019</p>
+  <p>Managed inventory and schedules for 8-10 technicians based on staff expertise.</p>
+</div>
+
+<button class="accordion">Master Technician at Countryside Ford, Columbus, WI</button>
+<div class="panel">
+  <p>2016 - 2017</p>
+  <p>Diagnosed and repaired customer vehicles, ensuring high-quality repairs.</p>
+</div>
+
+<button class="accordion">Technician/Master Technician at West Town Monona Tire, Madison, WI</button>
+<div class="panel">
+  <p>2012 - 2016</p>
+  <p>Acquired hands-on experience in automotive repair and maintenance as an apprentice, developing a solid foundation in technical skills and problem-solving within a fast-paced shop environment. 
+    Progressively advanced skills while working through Madison Area Technical College, becoming a master technician through dedication, hard work and continuous development.</p>
+</div>
+
+<h2>Education</h2>
+
+<button class="accordion">Bachelor of Science in Computer Science - University of Wisconsin-Platteville
+</button>
+<div class="panel">
+  <p>Graduated May 2023, GPA: 3.64</p>
+  <p>Relevant coursework: Programing Language Structures, Calculus, Discrete Mathematics, Object-Oriented Programming and Data Structures I & II, Object-Oriented Analysis and Design, Artificial Intelligence</p>
+</div>
+
+<button class="accordion">Degree in Automotive Technology - Madison Area Technical College</button>
+<div class="panel">
+  <p>Graduated May 2015</p>
+  <p>Relevant coursework: </p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>
