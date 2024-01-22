@@ -4,14 +4,122 @@
     ViewData["Title"] = "Project 1";
 }
 
-<h2>Computer Vision - Road Sign detection</h2>
+<h1>Computer Vision - Road Sign detection</h1>
 
-<h1>Content to come</h1>
+<p>*** ALL IMAGES AND MODEL ACCURACIES ARE BASED ON A SMALL TRAINING DATA SET (~1000 images) ***</p>
 
-<h2>Time Series - Reciept project</h2>
+<p>During my second year of internship at Mandli Communications, I took on the challenging task of 
+    automating road sign detection and identification. Mandli's core focus involves the collection of 
+    geospatial data employing the technologies of LiDAR, 360-degree imagery, and a laser crack measurement
+     system for state Departments of Transportation (DOTs). Critical roadway assets include pavement, signs, 
+     guardrails, and more. The comprehensive set of geospatial data collected allows state DOTs to locate and 
+     review assets that require maintenance or replacement.</p>
 
-<h1>Content to come</h1>
+<p>The emphasis of the project was to create a proof of concept (POC) of a computer vision based software module 
+    that would live in the software processing pipeline and lower labor expenses for the company.  Not only does 
+    Mandli collect data, it delivers databases populated with asset identification and condition to be used in generating 
+    reports to the federal government and for statistical analysis used in planning optimal use of highway dollars.  
+ </p>
 
-<h2>Time Series - Stock value Perdictions</h2>
+<p>The overarching goal was to automate away the post-processing manual review of LiDAR and imagery needed to identify
+     and classify assets. The first target of this automation was road signs. Mandli's plan was to expand the pipeline 
+     module's automation to include all post-processed assets. I moved this technology forward, delivered a functioning POC 
+     and ultimately presented it in a demonstration to a very delighted company owner.
+</p>
+<p>I was the only developer on this proof of concept project. Mandli had no in-house experts in the use of computer vision 
+    machine learning (ML). I did have access to more senior developers and staff to point me at existing tools and software 
+    with which to manipulate the data and imagery. It was my task to choose the proper ML tools and use them effectively. 
+    After much reading and research, I chose the YOLO (You Only Look Once) ML library developed by Ultralytics because it was widely 
+    thought well of in the computer vision ML world and because the models it generated could run much faster than other models 
+    (enabling the future possibility of real-time asset identification during collection).
+</p>
 
-<h1>Content to come</h1>
+<p>The first step in developing this software was to extract imagery data and the corresponding classification information that had been
+     manually created previously and use it for training ML models that would then run as part of the final pipeline processing module.  
+     This involved retrieving and formatting data from Mandli's MySQL databases and image storage repositories. Mandli has a huge and 
+     robust datastore of classified imagery and LiDAR assets.</p>
+
+<h3>Training Data Preparation</h3>
+<div>
+    <p>To begin obtaining the data, I delved into understanding the database structure by utilizing MySQL Workbench to navigate 
+        through the various table structures. I encountered what most data scientists discover and that is the data needed for training
+        is often not stored in a uniform way.  Mandli's databases exhibited variability across states and years, necessitating adaptable
+        queries to extract the required information. The data was organized into segments known as routes as the sheer volume of data 
+        being collected spans multiple multi-terabyte drives. It's worth noting that some states and years had no signs in the data due 
+        to independent collection efforts by those states.</p>
+
+    <p>Once having gained a good understanding of the databases, my next task involved gathering essential information such as the sign 
+        type code (MUTCD code),a text description, a bounding box of points, and an image frame number for each sign that would then 
+        be used in retrieving the imagery to feed to YOLO. YOLO requires an annotation file that includes the classification type code 
+        and four points outlining the region of interest within each training image. While the database stored more than four points, 
+        I computed the largest possible bounding box to serve as the region of interest for the annotation file. To ensure uniqueness, 
+        I assigned UUID numbers as names for both the annotation files and corresponding images.</p>
+    
+    <p>Additionally, I crafted and formatted .YAML files to store model classifications, number of classifications, incorporating file 
+        pathways for the training, testing, and validation sets. With these preparations completed, I projected the bounding boxes onto 
+        the images and systematically removed problematic images. Criteria for removal included incorrect image frame numbers or inaccurately 
+        marked bounding boxes. After this data-cleaning process, approximately 150,000 high-quality images remained, ready for utilization 
+        in the training, testing, and validation processes.</p>
+
+    <h3>Example of identification by MUTCD code and its cofidences (in blue)</h3>
+    <img src="~/Images/Example_identification.jpg" alt="">
+    <h3>Example of an annotation file</h3>
+    <img src="~/Images/Example_annotation_file.jpg" alt="">
+    <h3>Example of .YAML file</h3>
+    <img src="~/Images/YAML_EXAMPLE.jpg" alt="">
+</div>
+
+
+
+<h3>Project Challenges</h3>
+
+<div class="figure">
+  <p>The initial step in constructing the training dataset involved importing the necessary Rust code, which served as a library for 
+    converting Lidar coordinates (X, Y, Z) to pixel points (X, Y) into my Python environment. Subsequently, I projected these points 
+    onto the images, leading to a discovery that the bounding boxes didn't always line up correctly due to inadequate alignment of the 
+    mechanical aspects of the collection system.</p>
+
+  <img src="~/Images/Example_of_Alignment.jpg" alt="">
+
+  <p>An error surfaced when I projected the bounding box points onto the images. The collection system post processing module needed 
+    a "fine alignment" applied that relied on the collected imagery and LiDAR to compute higher accuracy spacing and orientation information 
+    of the sensors on each collection vehicle. The geometry of the camera angles and LiDAR systems is critical for mapping between their data.
+    This discrepancy was compounded by a rounding error within the in-house Java application, Road-View Explorer which had been used by the 
+    staff to manually record the information being extracted for training. To address this, a retroactive fix was implemented by calculating 
+    in reverse from a correctly placed bounding box in imagery back to sensor geometry and spacing on the vehicle. Once the geometry for data 
+    from a vehicle was thus calibrated it was applied to all data collected in that vehicle's routes and immediately brought all of the 
+    bounding boxes into the proper locations. This was not a simple offset correction but a calibrated change to the coefficients in the 
+    geometric models used in calculations. To understand this issue it is necessary to remember that the signs are collected in imagery at 
+    different distances from the collection vehicle and that a small change in angle makes a bigger difference in the position of the sign the 
+    further away the sign is. This was an intelligent way to retroactively fix huge volumes of training data without manually correcting each 
+    image and bounding box and ultimately was critical to getting enough good data for training. This correction ensured the accuracy of the 
+    dataset and enabled success of the project.</p>
+</div>
+
+<div>
+    <p>Another challenge emerged in the trained YOLO ML model for identifying the sign by MUTCD code. One of the needed outputs of the model 
+        when it is running on imagery is for it to provide a bounding box surrounding the entire sign. The issue was that the bounding box 
+        returned by the YOLO model only surrounded the text portion of the image it used for identifying the signs code which was not the 
+        entire sign face. This is understandable when one remembers that there are several different speed limit signs each with their own 
+        code with certain unique features that identify them. The solution to the problem was to train another model that would find any sign 
+        and surround the entire sign's face. The models performed brilliantly on classifying the signs by MUTCD code and in locating the signs.</p>
+
+    <img src="~/Images/school_zone_ID.jpg" alt="">
+
+</div>
+
+<div>
+    <p>The project proved to be a significant success, marked by valuable learning experiences from the challenges encountered. 
+        Throughout this endeavor, I deepened my comprehension of the critical role played by database structure and data consistency. 
+        The project provided insights into many aspects of machine learning applied to computer vision applications, including model
+        development, hyperparameters, and deployment processes. Navigating through outdated and incomplete company documentation served 
+        as a learning opportunity and strengthened my future commitment to properly documenting data structures, sources, and processes. 
+        Nevertheless, the problems with consistency in data storage and documentation did provide me the opportunity to be innovative in
+        finding ways to work around similar problems that likely exist in every company's data.</p>
+    
+    <img src="~/Images/Custom_multi_sign_ID.jpg" alt="">
+    
+    <p>I have immense gratitude for the opportunity extended by Mandli Communications and for having faith in me to spearhead and develop 
+        this project. The experience was  instrumental in broadening my skill set and knowledge, and I look forward to applying everything 
+        I have learned to future innovative projects.</p> 
+</div>
