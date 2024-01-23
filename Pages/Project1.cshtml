@@ -4,21 +4,21 @@
     ViewData["Title"] = "Project 1";
 }
 
-<h1>Computer Vision - Road Sign detection</h1>
+<h1>Computer Vision - ML Road Sign detection and identification POC</h1>
 
 <p>*** ALL IMAGES AND MODEL ACCURACIES ARE BASED ON A SMALL TRAINING DATA SET (~1000 images) ***</p>
 
 <p>During my second year of internship at Mandli Communications, I took on the challenging task of 
     automating road sign detection and identification. Mandli's core focus involves the collection of 
     geospatial data employing the technologies of LiDAR, 360-degree imagery, and a laser crack measurement
-     system for state Departments of Transportation (DOTs). Critical roadway assets include pavement, signs, 
-     guardrails, and more. The comprehensive set of geospatial data collected allows state DOTs to locate and 
-     review assets that require maintenance or replacement.</p>
+    system for state Departments of Transportation (DOTs). The comprehensive set of geospatial data collected allows state DOTs to locate and 
+    review assets that require maintenance or replacement. Critical roadway assets include pavement, signs, 
+    guardrails, and more.</p>
 
 <p>The emphasis of the project was to create a proof of concept (POC) of a computer vision based software module 
     that would live in the software processing pipeline and lower labor expenses for the company.  Not only does 
     Mandli collect data, it delivers databases populated with asset identification and condition to be used in generating 
-    reports to the federal government and for statistical analysis used in planning optimal use of highway dollars.  
+    reports to the federal government and for analysis used in planning optimal use of highway dollars.  
  </p>
 
 <p>The overarching goal was to automate away the post-processing manual review of LiDAR and imagery needed to identify
@@ -61,7 +61,7 @@
         marked bounding boxes. After this data-cleaning process, approximately 150,000 high-quality images remained, ready for utilization 
         in the training, testing, and validation processes.</p>
 
-    <h3>Example of identification by MUTCD code and its cofidences (in blue)</h3>
+    <h3>Example of identification by MUTCD code and its confidences (in blue)</h3>
     <img src="~/Images/Example_identification.jpg" alt="">
     <h3>Example of an annotation file</h3>
     <img src="~/Images/Example_annotation_file.jpg" alt="">
@@ -75,15 +75,16 @@
 
 <div class="figure">
   <p>The initial step in constructing the training dataset involved importing the necessary Rust code, which served as a library for 
-    converting Lidar coordinates (X, Y, Z) to pixel points (X, Y) into my Python environment. Subsequently, I projected these points 
+    converting Lidar coordinates (X, Y, Z) to pixel points (X, Y) into my Python environment.Both rust and python both support C language 
+    bindings so I used these bindings to import the rust coded into my python environment. Subsequently, I projected these points 
     onto the images, leading to a discovery that the bounding boxes didn't always line up correctly due to inadequate alignment of the 
     mechanical aspects of the collection system.</p>
 
   <img src="~/Images/Example_of_Alignment.jpg" alt="">
 
-  <p>An error surfaced when I projected the bounding box points onto the images. The collection system post processing module needed 
+  <p>The collection system post processing module needed 
     a "fine alignment" applied that relied on the collected imagery and LiDAR to compute higher accuracy spacing and orientation information 
-    of the sensors on each collection vehicle. The geometry of the camera angles and LiDAR systems is critical for mapping between their data.
+    for the sensors on each collection vehicle. The geometry of the camera angles and LiDAR systems is critical for mapping between their data.
     This discrepancy was compounded by a rounding error within the in-house Java application, Road-View Explorer which had been used by the 
     staff to manually record the information being extracted for training. To address this, a retroactive fix was implemented by calculating 
     in reverse from a correctly placed bounding box in imagery back to sensor geometry and spacing on the vehicle. Once the geometry for data 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj": {}
+    "C:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj": {
+    "C:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj",
         "projectName": "MyFirstAzureWebApp",
-        "projectPath": "c:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj",
+        "projectPath": "C:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\MyFirstAzureWebApp.csproj",
         "packagesPath": "C:\\Users\\Peter Antonuk\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\obj\\",
+        "outputPath": "C:\\Users\\Peter Antonuk\\source\\repos\\Portfolio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Peter Antonuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
