@@ -1,2 +1,33 @@
 c:\Users\peter\repos\MyFirstAzureWebApp\bin\Debug\net7.0\MyFirstAzureWebApp.exe
 c:\Users\peter\repos\MyFirstAzureWebApp\bin\Debug\net7.0\MyFirstAzureWebApp.dll
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\appsettings.Development.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\appsettings.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.staticwebassets.runtime.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.exe
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.deps.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.runtimeconfig.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.dll
+c:\Users\Peter Antonuk\source\repos\Portfolio\bin\Debug\net7.0\MyFirstAzureWebApp.pdb
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.AssemblyInfoInputs.cache
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.AssemblyInfo.cs
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.csproj.CoreCompileInputs.cache
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.RazorAssemblyInfo.cache
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.RazorAssemblyInfo.cs
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets\msbuild.MyFirstAzureWebApp.Microsoft.AspNetCore.StaticWebAssets.props
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets\msbuild.build.MyFirstAzureWebApp.props
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.MyFirstAzureWebApp.props
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.MyFirstAzureWebApp.props
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets.pack.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets.build.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\staticwebassets.development.json
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\scopedcss\Shared\_Layout.cshtml.rz.scp.css
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\scopedcss\bundle\MyFirstAzureWebApp.styles.css
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\scopedcss\projectbundle\MyFirstAzureWebApp.bundle.scp.css
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.dll
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\refint\MyFirstAzureWebApp.dll
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.pdb
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\MyFirstAzureWebApp.genruntimeconfig.cache
+c:\Users\Peter Antonuk\source\repos\Portfolio\obj\Debug\net7.0\ref\MyFirstAzureWebApp.dll
